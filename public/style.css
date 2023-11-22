@@ -576,7 +576,7 @@ footer {
 }
 
 .status-bar {
-  height: 55px;
+  height: 30px;
   background: #004e45;
   color: #fff;
   font-size: 14px;
@@ -615,3 +615,36 @@ footer {
   word-wrap: break-word;
   z-index: -1;
 }
+
+.user-bar .avatar {
+  margin: 0 0 0 5px;
+  background-color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: block;
+}
+
+.user-bar div {
+  float: left;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;}
+
+  .user-bar .name {
+    color: white !important;
+    font-size: 17px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+    margin: 0 0 0 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 160px;
+  }
+
+  .user-bar .actions {
+    float: right;
+    margin: 0 0 0 20px;
+  }

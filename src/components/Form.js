@@ -88,9 +88,17 @@ export default function Form(){
     <div className="screen">
 
       <div className="status-bar"></div>
-      <div className="user-bar"></div>
+      <div className="user-bar">
+            <div className="avatar"></div>
+            <div className="name">
+            <span>+55 11997876428</span>
+            </div>
+            <div className="actions">X</div>
+            <div className="actions more">X</div>
+            
+      </div>
       <div className="message sent">
-      <div style={{}}> Mensagem Teste </div>
+      Mensagem Testes
       </div>
     </div>
     <div className="home"></div>
