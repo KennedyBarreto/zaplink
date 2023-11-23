@@ -49,7 +49,7 @@ export default function Form(){
 
         // Check if Phone Number field is empty and throw error
         if(phoneNumber.value === ""){
-            return errorMessage.innerHTML = "Number can't be empty! Phone Number needed to generate Link!"
+            return errorMessage.innerHTML = "O campo número não pode estar vazio!"
         }else{
             errorMessage.innerHTML = ""
         }
@@ -138,8 +138,15 @@ export default function Form(){
             <div className="actions more"><IoMdMore/></div>
             <div className="actions"><FaPhoneAlt/></div>
       </div>
-      <div className="message sent">
-      {texto}
+      <div className="conversation">
+        <div className="conversation-container">
+            <div className="message sent">
+                {texto}
+            </div>
+        </div>
+        <div className="typebox">
+
+        </div>
       </div>
     </div>
     <div className="home"></div>

@@ -657,3 +657,24 @@ footer {
     float: right;
     margin: 0 0 0 20px;
   }
+
+  .conversation {
+    height: calc(100% - 12px);
+    position: relative;}
+
+  .conversation .conversation-container {
+    height: calc(100% - 110px);
+    box-shadow: inset 0 10px 10px -10px #000000;
+    overflow-x: hidden;
+    padding: 0 16px;
+      padding-bottom: 0px;
+    margin-bottom: 5px;
+    padding-bottom: 25px;}
+
+  .conversation .typebox {
+    height: 80px;
+  background: rgb(255, 255, 255);
+  padding: 10px;
+  position: relative;
+  top: -20px;
+  }
