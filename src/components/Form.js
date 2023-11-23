@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {FaCopy} from "react-icons/fa"
-import { FaPhone } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMore } from "react-icons/io";
 // react-phone-number-input package
 import PhoneInput from "react-phone-number-input";
@@ -82,6 +82,7 @@ export default function Form(){
             <div>
 
             <div id="form-data">
+                    <h4> Crie seu link agora!</h4>
                     {/* React-phone-number-input <PhoneInput /> package component*/}
                     <PhoneInput
                         className="PhoneInput"
@@ -135,7 +136,7 @@ export default function Form(){
             <span>{value}</span>
             </div>
             <div className="actions more"><IoMdMore/></div>
-            <div className="actions"><FaPhone/></div>
+            <div className="actions"><FaPhoneAlt/></div>
       </div>
       <div className="message sent">
       {texto}
