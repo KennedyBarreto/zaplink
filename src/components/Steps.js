@@ -29,8 +29,7 @@ export default function Steps(){
                         <FaLink className="step-icons"/>
                         <h2> Get your Link</h2>
                         <p>Hit Enter or Click on the "Generate Link" Button. Voila!🥳 Your personal link will be displayed under.</p>
-                        <p>Now you can add a WhatsApp Contact button with custom messages to your Business page(s).</p>
-                        <p>Copy and Share your Link!🎊</p>
+                        
                     </div>
                 </div>
             </div>
