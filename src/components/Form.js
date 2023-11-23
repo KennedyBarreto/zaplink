@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {FaCopy} from "react-icons/fa"
+import { FaPhone } from "react-icons/fa";
+import { IoMdMore } from "react-icons/io";
 // react-phone-number-input package
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
@@ -11,6 +13,7 @@ export default function Form(){
     const [Link, setLink] = useState(null);
     // setting state of input to react-phone-number-input package defined states
     const [value, setValue] = useState()
+    const [texto, setTexto] = useState('');
 
     
     // Function to generate Link
@@ -72,44 +75,16 @@ export default function Form(){
         }
     }
     
+    const handleChange = (event) => {
+        setTexto(event.target.value);
+      };
    
 // Page content
     return (
         <div id="form">
             <div>
-                <div className="template-img">
 
-<div className="marvel-device nexus5 white">
-    <div className="top-bar"></div>
-    <div className="sleep"></div>
-    <div className="volume"></div>
-    <div className="camera"></div>
-    <div className="sensor"></div>
-    <div className="speaker"></div>
-    <div className="screen">
-
-      <div className="status-bar"></div>
-      <div className="user-bar">
-            <div className="avatar"></div>
-            <div className="name">
-            <span>+55 11997876428</span>
-            </div>
-            <div className="actions">X</div>
-            <div className="actions more">X</div>
-            
-      </div>
-      <div className="message sent">
-      Mensagem Testes
-      </div>
-    </div>
-    <div className="home"></div>
-    <div className="bottom-bar"></div>
-</div>
-
-					
-                    
-                </div>
-                <div id="form-data">
+            <div id="form-data">
                     {/* React-phone-number-input <PhoneInput /> package component*/}
                     <PhoneInput
                         className="PhoneInput"
@@ -128,6 +103,7 @@ export default function Form(){
                         type="text" 
                         placeholder="Insira a mensagem personalizada"
                         rows={15}
+                        onChange={handleChange}
                         onKeyUp={keyPressAction}
                     />
 
@@ -143,6 +119,39 @@ export default function Form(){
                     </div>}
 
                 </div>
+
+                <div className="template-img">
+
+                <div class="marvel-device iphone8 silver">
+    <div class="top-bar"></div>
+    <div class="sleep"></div>
+    <div class="volume"></div>
+    <div class="camera"></div>
+    <div class="sensor"></div>
+    <div class="speaker"></div>
+    <div className="screen">
+
+      <div className="status-bar"></div>
+      <div className="user-bar">
+            <div className="avatar"></div>
+            <div className="name">
+            <span>{value}</span>
+            </div>
+            <div className="actions more"><IoMdMore/></div>
+            <div className="actions"><FaPhone/></div>
+      </div>
+      <div className="message sent">
+      {texto}
+      </div>
+    </div>
+    <div className="home"></div>
+    <div className="bottom-bar"></div>
+</div>
+
+					
+                    
+                </div>
+                
             </div>
         </div>
     )

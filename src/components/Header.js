@@ -10,10 +10,10 @@ export default function Header(){
             <div id="header">
                 <div>
                     <h1>ZapLink</h1>
-                    <h2>Generate your personal WhatsApp Contact Link in 3 easy steps!</h2>
-                    <h3>Make reaching you easier for your Customers. </h3>
+                    <h2>Crie o seu link de contato pessoal do WhatsApp em um clique!</h2>
+<h3>Facilite o contato dos seus clientes com você.</h3>
                     <HashLink to="#form">
-                        <button>Generate Link</button>
+                        <button>Criar Link</button>
                     </HashLink>
                 </div>
                 <div id="headerImg">

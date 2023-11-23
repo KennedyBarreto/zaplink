@@ -154,7 +154,7 @@ nav .site-title {
   color: #00ff9d;
 }
 nav ul {
-  margin: auto;
+  margin: auto auto auto 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -621,6 +621,10 @@ footer {
   z-index: -1;
 }
 
+.user-bar {
+  color: #fff;
+  font-size: 24px;
+}
 .user-bar .avatar {
   margin: 0 0 0 5px;
   background-color: #fff;

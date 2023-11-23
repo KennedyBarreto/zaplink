@@ -37,25 +37,23 @@ export default function Nav(){
         <nav>
         <HashLink to="#header"><h2 className="site-title">ZapLink</h2></HashLink>
             <ul>
-                
-                <HashLink to="#form">GET LINK</HashLink>
-                <li>ABOUT US</li>
-                <li><a href="mailto:1leadtechie@gmail.com">CONTACT US </a></li>
-                
-                
+               
+                <HashLink to="#form">CRIE SEU LINK</HashLink>
+                <li>SOBRE NÓS</li>
+                <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
-            
+            <FaBars id="hamburger" className="bars" onClick={showHideNav}/>
         </nav>
 
         <div id="mNav">
             <FaCaretLeft id="closeNav" className="close" onClick={showHideNav}/>
             <ul>
-                <HashLink to="#steps"><li><FaInfo /> LEARN </li></HashLink>
-                <HashLink to="#form">GET LINK</HashLink>
-                <li>ABOUT US</li>
-                <li><a href="mailto:1leadtechie@gmail.com">CONTACT US </a></li>
-                <li><a href="github.com/eimaam/whats-link">SOURCE CODE</a></li>
-                <li>MORE APPS</li>
+            <ul>
+                <HashLink to="#header"></HashLink>
+                <HashLink to="#form">CRIE SEU LINK</HashLink>
+                <li>SOBRE NÓS</li>
+                <li><a href="mailto:">ENTRE EM CONTATO</a></li>
+            </ul>
             </ul>
         </div>
         </>

@@ -10,13 +10,14 @@ export default function Footer(){
                 </div>
             </div>
             <div className="endNote">
-                <div>
-                    <p>Built with ❤️ </p>
-                    <p>All rights reserved. &copy; 2023</p>
-                </div>
-                <div>
-                    <p>Privacy Policy. Terms and Conditions. Documentation.</p>
-                </div>
+            <div>
+    <p>Todos os direitos reservados. &copy; 2023</p>
+</div>
+<div>
+    <p>Política de Privacidade. Termos e Condições. Documentação.</p>
+</div>
+
+
             </div>
         </footer>
     )

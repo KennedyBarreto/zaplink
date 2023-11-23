@@ -20,8 +20,8 @@
     position: absolute;
 }
 .marvel-device.iphone8 {
-    width: 375px;
-    height: 667px;
+    width: 337px;
+    height: 600px;
     padding: 105px 24px;
     background: #d9dbdc;
     border-radius: 56px;
@@ -1024,7 +1024,7 @@
     height: 500px;
     background: #1e1e1e;
     border-radius: 20px;
-    
+
 }
 .marvel-device.nexus5:before {
     border-radius: 600px / 50px;
@@ -1869,8 +1869,8 @@
     display: none;
 }
 .marvel-device.iphone-x {
-    width: 375px;
-    height: 812px;
+    width: 360px;
+    height: 750px;
     padding: 26px;
     background: #fdfdfd;
     -webkit-box-shadow: inset 0 0 11px 0 black;
