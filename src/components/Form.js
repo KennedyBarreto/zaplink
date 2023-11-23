@@ -12,6 +12,7 @@ export default function Form(){
     // setting state of input to react-phone-number-input package defined states
     const [value, setValue] = useState()
 
+    
     // Function to generate Link
     function generate(){
         const errorMessage =  document.getElementById("errorMessage");
@@ -78,7 +79,7 @@ export default function Form(){
             <div>
                 <div className="template-img">
 
-<div className="marvel-device iphone5c white">
+<div className="marvel-device nexus5 white">
     <div className="top-bar"></div>
     <div className="sleep"></div>
     <div className="volume"></div>

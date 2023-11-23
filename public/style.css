@@ -397,6 +397,11 @@ section > div button {
   }
 }
 #form > div > div {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 50%;
 }
 #form img {
@@ -522,7 +527,7 @@ footer {
   gap: 1rem;
   width: 80%;
   align-items: flex-start;
-  margin: 2rem auto 10rem auto;
+
 }
 @media only screen and (max-width: 800px) {
   #footer {

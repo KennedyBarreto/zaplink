@@ -9,7 +9,7 @@ export default function Header(){
             <Nav />
             <div id="header">
                 <div>
-                    <h1>WHATS-LINK</h1>
+                    <h1>ZapLink</h1>
                     <h2>Generate your personal WhatsApp Contact Link in 3 easy steps!</h2>
                     <h3>Make reaching you easier for your Customers. </h3>
                     <HashLink to="#form">
