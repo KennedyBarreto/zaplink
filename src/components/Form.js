@@ -26,12 +26,9 @@ export default function Form(){
         // Check if Phone Number field is empty and throw error
         // let contact_value = contact.value; 
         if(value === undefined){
-            return errorMessage.innerHTML = "Phone Number cannot be empty! Its required to generate a Link."
-        }else{
-            errorMessage.innerHTML = ""
-        }
-        if(value < 3){
-            return errorMessage.innerHTML = "Phone Number incorrect"
+            return errorMessage.innerHTML = "Digite um número de celular para começar!"
+        }else if(value.length <14 ){
+            return errorMessage.innerHTML = "Digite um número de celular válido"
         }
         if(customMessage.value === ""){
             result = res.replace(/\s/g, '%20');
