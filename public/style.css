@@ -693,3 +693,24 @@ footer {
     margin-left: 8px;
     width: 48px;
   }
+
+  .toolbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 85%;
+    background: white;
+    border-radius: 5px;
+  }
+
+  .toolbox button {
+    max-width: 30%;
+padding: 5px;
+  margin: 1rem auto;
+  font-family: "Space Grotesk", sans-serif;
+  background-color: #00ff9d;
+  color: #212121;
+  border: none;
+  text-transform: uppercase;
+  }

@@ -76,6 +76,8 @@ export default function Form(){
     const handleChange = (event) => {
         setTexto(event.target.value);
       };
+//Bold function
+      
    
 // Page content
     return (
@@ -96,6 +98,11 @@ export default function Form(){
                         limitMaxLength={true}
                     />
                     <h3>Digite a mensagem personalizada </h3>
+                    <div className="toolbox">
+                        <button id="bold">Negrito</button>
+                        <button>Italico</button>
+                        <button>Hachurado</button>
+                    </div>
                     <textarea 
                         name="customMessage"
                         id="customMessage" 
@@ -132,13 +139,13 @@ export default function Form(){
 
                 <div className="template-img">
 
-                <div class="marvel-device iphone8 silver">
-    <div class="top-bar"></div>
-    <div class="sleep"></div>
-    <div class="volume"></div>
-    <div class="camera"></div>
-    <div class="sensor"></div>
-    <div class="speaker"></div>
+                <div className="marvel-device iphone8 silver">
+    <div className="top-bar"></div>
+    <div className="sleep"></div>
+    <div className="volume"></div>
+    <div className="camera"></div>
+    <div className="sensor"></div>
+    <div className="speaker"></div>
     <div className="screen">
 
       <div className="status-bar"></div>
