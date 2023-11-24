@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {FaCopy} from "react-icons/fa"
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMore } from "react-icons/io";
+import { FaRegSmile } from "react-icons/fa";
 // react-phone-number-input package
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
@@ -105,6 +106,17 @@ export default function Form(){
                         onKeyUp={keyPressAction}
                     />
 
+                    <h3>Link personalizado (opcional) </h3>
+                    <div>
+                    <input disabled style={{
+                        maxWidth: "40%",
+                    }} value={"api.innovlink.click/"}></input>
+                    <input disabled style={{
+                        marginLeft: "10px",
+                        maxWidth: "50%",
+                        backgroundColor: "grey"
+                    }}></input>
+                    </div>
                     <p id="errorMessage"></p>
                     <button onClick={generate}>Criar Link</button>
                     
@@ -145,7 +157,10 @@ export default function Form(){
             </div>
         </div>
         <div className="typebox">
-            <div className="conversation-compose"></div>
+            <div className="conversation-compose">
+                <div className="emoji"><FaRegSmile /></div>
+                
+            </div>
         </div>
       </div>
     </div>
