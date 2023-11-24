@@ -6,12 +6,14 @@ export default function Footer(){
             <div id="footer">
                 <div>
                     
+                <img src=""></img>
+                <img src=""></img>
                
                 </div>
             </div>
             <div className="endNote">
             <div>
-    <p>Todos os direitos reservados. &copy; 2023</p>
+    <p>COMHUB 2023 &copy. Todos os direitos reservados</p>
 </div>
 <div>
     <p>Política de Privacidade. Termos e Condições. Documentação.</p>

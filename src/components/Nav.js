@@ -39,7 +39,7 @@ export default function Nav(){
             <ul>
                
                 <HashLink to="#form">CRIE SEU LINK</HashLink>
-                <li>SOBRE NÓS</li>
+                <HashLink to="#steps"><li>PASSO-A-PASSO</li></HashLink>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
             <FaBars id="hamburger" className="bars" onClick={showHideNav}/>

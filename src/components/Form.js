@@ -145,7 +145,7 @@ export default function Form(){
             </div>
         </div>
         <div className="typebox">
-
+            <div className="conversation-compose"></div>
         </div>
       </div>
     </div>
