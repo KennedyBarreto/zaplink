@@ -13,7 +13,7 @@ export default function Footer(){
             </div>
             <div className="endNote">
             <div>
-    <p>COMHUB 2023 &copy. Todos os direitos reservados</p>
+    <p>COMHUB 2023 &copy; Todos os direitos reservados</p>
 </div>
 <div>
     <p>Política de Privacidade. Termos e Condições. Documentação.</p>
