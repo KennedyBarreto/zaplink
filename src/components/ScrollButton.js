@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 function ScrollButton(){
@@ -20,7 +19,8 @@ function ScrollButton(){
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  borderRadius:"5px"
+  borderRadius:"5px",
+  opacity:"0.7"
             }}><div><FaArrowUp/></div></button> </a>
             </>
         )

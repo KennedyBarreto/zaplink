@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {FaCopy} from "react-icons/fa"
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMore } from "react-icons/io";
@@ -15,6 +15,7 @@ export default function Form(){
     // setting state of input to react-phone-number-input package defined states
     const [value, setValue] = useState()
     const [texto, setTexto] = useState('');
+    
 
     
     // Function to generate Link
@@ -38,7 +39,7 @@ export default function Form(){
         setLink(result)
     };
     
-     
+    
     function keyPressAction(event){
         const errorMessage =  document.getElementById("errorMessage");
         const phoneNumber = document.getElementById("number");
@@ -55,10 +56,7 @@ export default function Form(){
             errorMessage.innerHTML = ""
         }
 
-        // Generate Link on Pressing Enter key
-        if(event.keyCode === 13){
-            setLink(result);
-        }
+        
     }
 
     // Copy generated link
@@ -75,9 +73,71 @@ export default function Form(){
     
     const handleChange = (event) => {
         setTexto(event.target.value);
+        
       };
-//Bold function
-      
+// Negrito, Italico e Tachado
+
+const textAreaRef = useRef(null);
+
+  const addBoldToTextArea = () => {
+    const textarea = textAreaRef.current;
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const text = textarea.value;
+
+    const selectedText = text.substring(startPos, endPos);
+    const newText = `*${selectedText}*`;
+
+    const updatedText =
+      text.substring(0, startPos) + newText + text.substring(endPos);
+
+    textarea.value = updatedText;
+  };
+   
+  const addItalToTextArea = () => {
+    const textarea = textAreaRef.current;
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const text = textarea.value;
+
+    const selectedText = text.substring(startPos, endPos);
+    const newText = `_${selectedText}_`;
+
+    const updatedText =
+      text.substring(0, startPos) + newText + text.substring(endPos);
+
+    textarea.value = updatedText;
+  };
+
+  const addTachToTextArea = () => {
+    const textarea = textAreaRef.current;
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const text = textarea.value;
+
+    const selectedText = text.substring(startPos, endPos);
+    const newText = `~${selectedText}~`;
+
+    const updatedText =
+      text.substring(0, startPos) + newText + text.substring(endPos);
+
+    textarea.value = updatedText;
+  };
+
+  const formatarTexto = (texto) => {
+    let novoTexto = texto;
+
+    // Substituir "*" por <b>
+    novoTexto = novoTexto.replace(/\*(.*?)\*/g, '<b>$1</b>');
+    
+    // Substituir "_" por <i>
+    novoTexto = novoTexto.replace(/_(.*?)_/g, '<i>$1</i>');
+
+    // Substituir "~" por <strike>
+    novoTexto = novoTexto.replace(/~(.*?)~/g, '<strike>$1</strike>');
+
+    return novoTexto;
+  };
    
 // Page content
     return (
@@ -99,9 +159,9 @@ export default function Form(){
                     />
                     <h3>Digite a mensagem personalizada </h3>
                     <div className="toolbox">
-                        <button id="bold">Negrito</button>
-                        <button>Italico</button>
-                        <button>Hachurado</button>
+                        <button id="bold" onClick={addBoldToTextArea}>Negrito</button>
+                        <button id="ital" onClick={addItalToTextArea}>Italico</button>
+                        <button id="tach" onClick={addTachToTextArea}>Hachurado</button>
                     </div>
                     <textarea 
                         name="customMessage"
@@ -111,6 +171,7 @@ export default function Form(){
                         rows={15}
                         onChange={handleChange}
                         onKeyUp={keyPressAction}
+                        ref={textAreaRef}
                     />
 
                     <h3>Link personalizado (opcional) </h3>
@@ -159,9 +220,12 @@ export default function Form(){
       </div>
       <div className="conversation">
         <div className="conversation-container">
-            <div className="message sent">
-                {texto}
-            </div>
+        
+      <div
+        className="message sent"
+        dangerouslySetInnerHTML={{ __html: formatarTexto(texto) }}
+      ></div>
+    
         </div>
         <div className="typebox">
             <div className="conversation-compose">
