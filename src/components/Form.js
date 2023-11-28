@@ -74,69 +74,72 @@ export default function Form(){
         setTexto(event.target.value);
         
       };
-// Negrito, Italico e Tachado
+ // Referência para a área de texto usando o hook useRef
+ const textAreaRef = useRef(null);
 
-const textAreaRef = useRef(null);
+ // Função para adicionar negrito ao texto selecionado na área de texto
+ const addBoldToTextArea = () => {
+   const textarea = textAreaRef.current;
+   const startPos = textarea.selectionStart;
+   const endPos = textarea.selectionEnd;
+   const text = textarea.value;
 
-  const addBoldToTextArea = () => {
-    const textarea = textAreaRef.current;
-    const startPos = textarea.selectionStart;
-    const endPos = textarea.selectionEnd;
-    const text = textarea.value;
+   const selectedText = text.substring(startPos, endPos);
+   const newText = `*${selectedText}*`;
 
-    const selectedText = text.substring(startPos, endPos);
-    const newText = `*${selectedText}*`;
+   const updatedText =
+     text.substring(0, startPos) + newText + text.substring(endPos);
 
-    const updatedText =
-      text.substring(0, startPos) + newText + text.substring(endPos);
+   textarea.value = updatedText;
+ };
+  
+ // Função para adicionar itálico ao texto selecionado na área de texto
+ const addItalToTextArea = () => {
+   const textarea = textAreaRef.current;
+   const startPos = textarea.selectionStart;
+   const endPos = textarea.selectionEnd;
+   const text = textarea.value;
 
-    textarea.value = updatedText;
-  };
+   const selectedText = text.substring(startPos, endPos);
+   const newText = `_${selectedText}_`;
+
+   const updatedText =
+     text.substring(0, startPos) + newText + text.substring(endPos);
+
+   textarea.value = updatedText;
+ };
+
+ // Função para adicionar tachado ao texto selecionado na área de texto
+ const addTachToTextArea = () => {
+   const textarea = textAreaRef.current;
+   const startPos = textarea.selectionStart;
+   const endPos = textarea.selectionEnd;
+   const text = textarea.value;
+
+   const selectedText = text.substring(startPos, endPos);
+   const newText = `~${selectedText}~`;
+
+   const updatedText =
+     text.substring(0, startPos) + newText + text.substring(endPos);
+
+   textarea.value = updatedText;
+ };
+
+ // Função para formatar o texto com tags HTML correspondentes ao negrito, itálico e tachado
+ const formatarTexto = (texto) => {
+   let novoTexto = texto;
+
+   // Substituir "*" por <b> (negrito)
+   novoTexto = novoTexto.replace(/\*(.*?)\*/g, '<b>$1</b>');
    
-  const addItalToTextArea = () => {
-    const textarea = textAreaRef.current;
-    const startPos = textarea.selectionStart;
-    const endPos = textarea.selectionEnd;
-    const text = textarea.value;
+   // Substituir "_" por <i> (itálico)
+   novoTexto = novoTexto.replace(/_(.*?)_/g, '<i>$1</i>');
 
-    const selectedText = text.substring(startPos, endPos);
-    const newText = `_${selectedText}_`;
+   // Substituir "~" por <strike> (tachado)
+   novoTexto = novoTexto.replace(/~(.*?)~/g, '<strike>$1</strike>');
 
-    const updatedText =
-      text.substring(0, startPos) + newText + text.substring(endPos);
-
-    textarea.value = updatedText;
-  };
-
-  const addTachToTextArea = () => {
-    const textarea = textAreaRef.current;
-    const startPos = textarea.selectionStart;
-    const endPos = textarea.selectionEnd;
-    const text = textarea.value;
-
-    const selectedText = text.substring(startPos, endPos);
-    const newText = `~${selectedText}~`;
-
-    const updatedText =
-      text.substring(0, startPos) + newText + text.substring(endPos);
-
-    textarea.value = updatedText;
-  };
-
-  const formatarTexto = (texto) => {
-    let novoTexto = texto;
-
-    // Substituir "*" por <b>
-    novoTexto = novoTexto.replace(/\*(.*?)\*/g, '<b>$1</b>');
-    
-    // Substituir "_" por <i>
-    novoTexto = novoTexto.replace(/_(.*?)_/g, '<i>$1</i>');
-
-    // Substituir "~" por <strike>
-    novoTexto = novoTexto.replace(/~(.*?)~/g, '<strike>$1</strike>');
-
-    return novoTexto;
-  };
+   return novoTexto;
+ };
    
 // Page content
     return (
