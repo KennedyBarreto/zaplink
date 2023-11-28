@@ -4,6 +4,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMore } from "react-icons/io";
 import { FaRegSmile } from "react-icons/fa";
 // react-phone-number-input package
+import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
 
@@ -16,48 +17,46 @@ export default function Form(){
     const [value, setValue] = useState()
     const [texto, setTexto] = useState('');
     
-
-    
     // Function to generate Link
     function generate(){
-        const errorMessage =  document.getElementById("errorMessage");
-        const customMessage = document.getElementById("customMessage");
-        const res = `https://api.whatsapp.com/send?phone=${value}&text=${customMessage.value}`;
-        let result = res.replace(/\s/g, '%20');
-        
-        // Check if Phone Number field is empty and throw error
-        // let contact_value = contact.value; 
-        if(value === undefined){
-            return errorMessage.innerHTML = "Digite um número de celular para começar!"
-        }else if(value.length <14 ){
-            return errorMessage.innerHTML = "Digite um número de celular válido"
-        }
-        if(customMessage.value === ""){
-            result = res.replace(/\s/g, '%20');
-            result = res.replace("+", "")
-        }
-        setLink(result)
-    };
-    
-    
-    function keyPressAction(event){
-        const errorMessage =  document.getElementById("errorMessage");
-        const phoneNumber = document.getElementById("number");
-        const customMessage = document.getElementById("customMessage");
-        const res = `https://api.whatsapp.com/send?phone=${phoneNumber.value}&text=${customMessage.value}`;
-        // replace white whitespaces in custom message with "%20" in order to follow the
-        // default WhatsApp link design 
-        const result = res.replace(/\s/g, '%20');
+      const errorMessage = document.getElementById("errorMessage");
+      const customMessage = document.getElementById("customMessage");
+      const titleUrl = document.getElementById("title").value; // Obtém o valor do título do input
 
-        // Check if Phone Number field is empty and throw error
-        if(phoneNumber.value === ""){
-            return errorMessage.innerHTML = "O campo número não pode estar vazio!"
-        }else{
-            errorMessage.innerHTML = ""
-        }
+    
+      // Verifica se o número de telefone está preenchido
 
-        
+      if(value === undefined){
+        return errorMessage.innerHTML = "Digite um número de celular para começar!"
+    }else if(value.length <14 ){
+        return errorMessage.innerHTML = "Digite um número de celular válido"
     }
+      
+      let res = `https://api.whatsapp.com/send?phone=${value}&text=${customMessage.value}`;
+      let result = res.replace(/\s/g, '%20');
+      // Cria o objeto com os dados a serem enviados para o endpoint de encurtamento
+      const data = {
+        origUrl: result,
+        shortTitle: titleUrl, // Utiliza o valor do título como shortTitle
+      };
+    
+      // Faz a requisição para o endpoint de encurtamento
+      axios.post('http://localhost:3333/short', data)
+        .then(response => {
+          const shortenedUrl = response.data.shortUrl; // Obtém o URL encurtado da resposta
+    
+          // Atualiza o estado Link com o URL encurtado retornado pelo servidor
+          setLink(shortenedUrl);
+    
+          // Limpa a mensagem de erro, se houver
+          errorMessage.textContent = "";
+        })
+        .catch(error => {
+          console.error('Erro ao encurtar URL:', error);
+          errorMessage.textContent = "Erro ao encurtar URL. Por favor, tente novamente.";
+        });
+    }
+    
 
     // Copy generated link
     const copyText = () =>{
@@ -153,7 +152,7 @@ const textAreaRef = useRef(null);
                         placeholder="Insira o número de telefone"
                         value={value}
                         onChange={setValue}
-                        onKeyUp={keyPressAction}
+                        
                         defaultCountry="BR"
                         limitMaxLength={true}
                     />
@@ -170,7 +169,7 @@ const textAreaRef = useRef(null);
                         placeholder="Insira a mensagem personalizada"
                         rows={15}
                         onChange={handleChange}
-                        onKeyUp={keyPressAction}
+                        
                         ref={textAreaRef}
                     />
 
@@ -179,10 +178,10 @@ const textAreaRef = useRef(null);
                     <input disabled style={{
                         maxWidth: "40%",
                     }} value={"api.innovlink.click/"}></input>
-                    <input disabled style={{
+                    <input id="title" style={{
                         marginLeft: "10px",
                         maxWidth: "50%",
-                        backgroundColor: "grey"
+                        
                     }}></input>
                     </div>
                     <p id="errorMessage"></p>
