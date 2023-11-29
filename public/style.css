@@ -114,6 +114,7 @@ button {
   padding: 0.8rem 1.5rem;
   border: none;
   text-transform: uppercase;
+  border-radius: 5px;
 }
 @media only screen and (max-width: 800px) {
   button {
