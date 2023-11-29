@@ -14,8 +14,9 @@ export default function Form(){
     // State for managing Link generation
     const [Link, setLink] = useState(null);
     // setting state of input to react-phone-number-input package defined states
-    const [value, setValue] = useState()
+    const [value, setValue] = useState('');
     const [texto, setTexto] = useState('');
+    const [title, setTitle] = useState(''); //novo state de teste pro titulo
     
     // Function to generate Link
     function generate(){
@@ -183,9 +184,21 @@ export default function Form(){
                     }} value={"api.innovlink.click/"}></input>
                     <input id="title" style={{
                         marginLeft: "10px",
-                        maxWidth: "50%",
-                        
-                    }}></input>
+                        maxWidth: "50%"}}
+                        value={title}
+  title="Máximo 15 caracteres, apenas letras, números e traços"
+  onChange={(e) => {
+    const inputValue = e.target.value;
+
+    // Aplicando regex para permitir apenas letras, números e "-"
+    const filteredValue = inputValue.replace(/[^A-Za-z0-9-]/g, '');
+
+    // Limitando o tamanho máximo para 15 caracteres
+    const trimmedValue = filteredValue.slice(0, 15);
+
+    // Atualizando o estado com o valor filtrado e limitado
+    setTitle(trimmedValue);
+  }}></input>
                     </div>
                     <p id="errorMessage"></p>
                     <button onClick={generate}>Criar Link</button>
