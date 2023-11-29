@@ -13,11 +13,19 @@ import 'react-phone-number-input/style.css'
 export default function Form(){
     // State for managing Link generation
     const [Link, setLink] = useState(null);
-    // setting state of input to react-phone-number-input package defined states
     const [value, setValue] = useState('');
     const [texto, setTexto] = useState('');
     const [title, setTitle] = useState(''); //novo state de teste pro titulo
+    const [trimmedValue, setTrimmedValue] = useState('');
     
+    const handleInputChange = (e) => {
+      const inputValue = e.target.value;
+      const filteredValue = inputValue.replace(/[^A-Za-z0-9-]/g, '');
+      const trimmed = filteredValue.slice(0, 15);
+  
+      setTitle(trimmed);
+      setTrimmedValue(trimmed);
+    };
     // Function to generate Link
     function generate(){
       const errorMessage = document.getElementById("errorMessage");
@@ -40,9 +48,12 @@ export default function Form(){
         origUrl: result,
         shortTitle: titleUrl, // Utiliza o valor do título como shortTitle
       };
-    
-      // Faz a requisição para o endpoint de encurtamento
-      axios.post('http://localhost:3333/short', data)
+
+      axios
+      .post('http://localhost:3333/check-url', { urlId: trimmedValue })
+      .then((res) => {
+        // Se o URL estiver disponível (não existe no banco de dados), então pode enviar os dados para criar o URL encurtado
+        axios.post('http://localhost:3333/short', data)
         .then(response => {
           const shortenedUrl = response.data.shortUrl; // Obtém o URL encurtado da resposta
     
@@ -56,8 +67,11 @@ export default function Form(){
           console.error('Erro ao encurtar URL:', error);
           errorMessage.textContent = "Erro ao encurtar URL. Por favor, tente novamente.";
         });
-    }
-    
+      })
+      .catch((err) => {
+        return errorMessage.innerHTML = "Titulo já existe no banco" // Trate o erro caso ocorra uma falha na verificação do URL
+      });
+  };
 
     // Copy generated link
     const copyText = () =>{
@@ -187,18 +201,7 @@ export default function Form(){
                         maxWidth: "50%"}}
                         value={title}
   title="Máximo 15 caracteres, apenas letras, números e traços"
-  onChange={(e) => {
-    const inputValue = e.target.value;
-
-    // Aplicando regex para permitir apenas letras, números e "-"
-    const filteredValue = inputValue.replace(/[^A-Za-z0-9-]/g, '');
-
-    // Limitando o tamanho máximo para 15 caracteres
-    const trimmedValue = filteredValue.slice(0, 15);
-
-    // Atualizando o estado com o valor filtrado e limitado
-    setTitle(trimmedValue);
-  }}></input>
+  onChange={handleInputChange}></input>
                     </div>
                     <p id="errorMessage"></p>
                     <button onClick={generate}>Criar Link</button>
