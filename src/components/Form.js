@@ -50,10 +50,10 @@ export default function Form(){
       };
 
       axios
-      .post('http://api.innovlink.click/check-url', { urlId: trimmedValue })
+      .post('http://localhost:3333/check-url', { urlId: trimmedValue })
       .then((res) => {
         // Se o URL estiver disponível (não existe no banco de dados), então pode enviar os dados para criar o URL encurtado
-        axios.post('http://api.innovlink.click/short', data)
+        axios.post('http://localhost:3333/short', data)
         .then(response => {
           const shortenedUrl = response.data.shortUrl; // Obtém o URL encurtado da resposta
     
