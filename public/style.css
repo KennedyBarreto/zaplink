@@ -196,7 +196,7 @@ nav li {
 @media only screen and (max-width: 800px) {
   #mNav {
     display: none;
-    width: 60%;
+    width: 65%;
     padding: 1rem 2rem;
     inset: 0 20% 0 0;
   }
