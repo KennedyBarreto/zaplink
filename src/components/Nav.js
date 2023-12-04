@@ -38,7 +38,7 @@ export default function Nav(){
         <a href="#header"><h2 className="site-title">ZapLink</h2></a>
             <ul>
                
-            <a href="#form">CRIE SEU LINK</a>
+            <a href="#form-data">CRIE SEU LINK</a>
                 <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
@@ -49,8 +49,8 @@ export default function Nav(){
             <FaCaretLeft id="closeNav" className="close" onClick={showHideNav}/>
             <ul>
             <ul>
-            <a href="#header"></a>
-            <a href="#form">CRIE SEU LINK</a>
+            <a href="#header"><h2 className="site-title">ZapLink</h2></a>
+            <a href="#form-data">CRIE SEU LINK</a>
                 <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
