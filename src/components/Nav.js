@@ -1,6 +1,6 @@
 import React from "react";
-import {FaInfo, FaBars, FaCaretLeft} from "react-icons/fa";
-import { HashLink } from "react-router-hash-link"
+import {FaBars, FaCaretLeft} from "react-icons/fa";
+
 
 export default function Nav(){
     // const body = document.getElementById("main");
@@ -35,11 +35,11 @@ export default function Nav(){
     return(
         <>
         <nav>
-        <HashLink to="#header"><h2 className="site-title">ZapLink</h2></HashLink>
+        <a href="#header"><h2 className="site-title">ZapLink</h2></a>
             <ul>
                
-                <HashLink to="#form">CRIE SEU LINK</HashLink>
-                <HashLink to="#steps"><li>PASSO-A-PASSO</li></HashLink>
+            <a href="#form">CRIE SEU LINK</a>
+                <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
             <FaBars id="hamburger" className="bars" onClick={showHideNav}/>
@@ -49,8 +49,8 @@ export default function Nav(){
             <FaCaretLeft id="closeNav" className="close" onClick={showHideNav}/>
             <ul>
             <ul>
-                <HashLink to="#header"></HashLink>
-                <HashLink to="#form">CRIE SEU LINK</HashLink>
+            <a href="#header"></a>
+            <a href="#form">CRIE SEU LINK</a>
                 <li>SOBRE NÓS</li>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
