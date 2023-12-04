@@ -51,7 +51,7 @@ export default function Nav(){
             <ul>
             <a href="#header"></a>
             <a href="#form">CRIE SEU LINK</a>
-                <li>SOBRE NÓS</li>
+                <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
             </ul>
