@@ -32,13 +32,20 @@ export default function Nav(){
     // body.addEventListener("click", bodyHide);
 // Function end
 
+const scrollToForm = () => {
+    const formSection = document.getElementById('form-data');
+
+    if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
     return(
         <>
         <nav>
         <a href="#header"><h2 className="site-title">ZapLink</h2></a>
             <ul>
-               
-            <a href="#form-data">CRIE SEU LINK</a>
+            <a href="#form-data" onClick={scrollToForm}>CRIE SEU LINK</a>
                 <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
@@ -50,7 +57,7 @@ export default function Nav(){
             <ul>
             <ul>
             <a href="#header"><h2 className="site-title">ZapLink</h2></a>
-            <a href="#form-data">CRIE SEU LINK</a>
+            <a href="#form-data" onClick={scrollToForm}>CRIE SEU LINK</a>
                 <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
