@@ -51,7 +51,7 @@ const scrollToForm = () => {
                 <a href="#steps"><li>PASSO-A-PASSO</li></a>
                 <li><a href="mailto:">ENTRE EM CONTATO</a></li>
             </ul>
-            <FaBars id="hamburger" className="bars" onClick={showHideNav}/>
+            <FaBars id="hamburger" className="bars" size="30" onClick={showHideNav}/>
         </nav>
 
         <div id="mNav">
