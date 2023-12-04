@@ -32,7 +32,7 @@
 
 ## :dart: Sobre ##
 
-Gerador de links de contato para Whatsapp integrado com o a API do encurtador de links <a href="innovlink.click"> Innovlink </a>
+Gerador de links de contato para Whatsapp integrado com o a API do encurtador de links <a href="https://innovlink.click/" target="_blank"> Innovlink </a>
 
 ## :sparkles: Funcionalidades ##
 
