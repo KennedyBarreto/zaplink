@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+button, a, .bars, .close{
+  cursor: pointer;
+}
+
 html, body {
   margin: auto;
   scroll-behavior: smooth;
@@ -172,6 +176,14 @@ nav ul {
 nav li {
   text-transform: uppercase;
   align-self: center;
+}
+
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* Adicione padding ou tamanho para criar uma área de clique mais ampla */
 }
 
 .bars, .close {
