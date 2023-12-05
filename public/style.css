@@ -22,7 +22,7 @@ html, body {
   transition: 700ms ease-in;
   overflow-x: hidden;
   word-wrap: break-word;
-  text-align: justify;
+  text-align: center;
   scroll-padding-top: 15vh;
 }
 
@@ -322,7 +322,7 @@ section > div button {
 }
 
 #steps {
-  margin-block: 2rem;
+
   background-color: #00ff9d;
   margin-block: 5rem;
 }
@@ -344,7 +344,7 @@ section > div button {
 #steps > div {
   margin: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -359,7 +359,15 @@ section > div button {
   }
 }
 #steps > div > div {
-  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+@media only screen and (max-width: 800px) {
+  #steps > div > div {
+    display: block;
+  flex-direction: none;
+    flex: 1;
+  }
 }
 #steps > div .steps > div {
   padding: 2rem;
@@ -369,6 +377,7 @@ section > div button {
 }
 #steps .FaAngleDoubleRight {
   font-size: 5rem;
+  margin: auto;
 }
 @media only screen and (max-width: 800px) {
   #steps .FaAngleDoubleRight {

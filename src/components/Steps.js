@@ -9,7 +9,7 @@ export default function Steps(){
                 <div className="step1">
                     <h2> Crie seu link em 3 passos </h2>
                     <div>
-                        <FaAngleDoubleRight className="FaAngleDoubleRight"/>
+                        
                         <FaAngleDoubleDown className="FaAngleDoubleDown"/>
                     </div>
                 </div>
@@ -20,11 +20,13 @@ export default function Steps(){
                         <h2> Abra o ZapLink </h2>
                         <p>Abra o ZapLink pelo seu navegador e clique em "Criar Link".</p>
                     </div>
+                    <FaAngleDoubleRight className="FaAngleDoubleRight"/>
                     <div>
                         <FaRocketchat className="step-icons"/>
-                        <h2> Digite seu número &amp; e mensagem personalizada... </h2>
+                        <h2> Digite seu número &amp; e mensagem personalizada </h2>
                         <p>Preencha o formulário com seu número e uma mensagem.</p>
                     </div>
+                    <FaAngleDoubleRight className="FaAngleDoubleRight"/>
                     <div>
                         <FaLink className="step-icons"/>
                         <h2> Copie o Link </h2>
