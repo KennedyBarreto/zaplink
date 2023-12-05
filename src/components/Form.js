@@ -7,7 +7,8 @@ import { FaRegSmile } from "react-icons/fa";
 import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import 'react-phone-number-input/style.css'
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Form(){
@@ -23,8 +24,8 @@ export default function Form(){
       const filteredValue = inputValue.replace(/[^A-Za-z0-9-]/g, '');
       const trimmed = filteredValue.slice(0, 15);
   
-      setTitle(trimmed);
-      setTrimmedValue(trimmed);
+      setTitle(trimmed.toLowerCase()); // Transforma para minúsculas
+      setTrimmedValue(trimmed.toLowerCase());
     };
     // Function to generate Link
     function generate(){
@@ -35,10 +36,14 @@ export default function Form(){
     
       // Verifica se o número de telefone está preenchido
 
-      if(value === undefined){
+      if(!value){
+        const notify = () => toast.error("Digite um número de celular para começar!");
+        notify();
         return errorMessage.innerHTML = "Digite um número de celular para começar!"
     }else if(value.length <14 ){
-        return errorMessage.innerHTML = "Digite um número de celular válido"
+      const notify = () => toast.error("Digite um número de celular válido!");
+      notify();
+        return errorMessage.innerHTML = "Digite um número de celular válido!"
     }
       
       let res = `https://api.whatsapp.com/send?phone=${value}&text=${customMessage.value}`;
@@ -56,7 +61,8 @@ export default function Form(){
         axios.post('https://api.innovlink.click/short', data)
         .then(response => {
           const shortenedUrl = response.data.shortUrl; // Obtém o URL encurtado da resposta
-    
+          const notify = () => toast.success("Link criado com sucesso!");
+              notify();
           // Atualiza o estado Link com o URL encurtado retornado pelo servidor
           setLink(shortenedUrl);
     
@@ -69,7 +75,10 @@ export default function Form(){
         });
       })
       .catch((err) => {
-        return errorMessage.innerHTML = "Titulo já existe no banco" // Trate o erro caso ocorra uma falha na verificação do URL
+        const notify = () => toast.error("Titulo já existe no banco!");
+              notify();
+        return errorMessage.innerHTML = "Titulo já existe no banco"
+         // Trate o erro caso ocorra uma falha na verificação do URL
       });
   };
 
@@ -204,6 +213,7 @@ export default function Form(){
   onChange={handleInputChange}></input>
                     </div>
                     <p id="errorMessage"></p>
+                    <ToastContainer theme="colored"/>
                     <button onClick={generate}>Criar Link</button>
                     
                     {/* Result Link displayed on condition that Phone number field is not empty */}
