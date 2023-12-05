@@ -23,7 +23,7 @@ export default function Steps(){
                     <FaAngleDoubleRight className="FaAngleDoubleRight"/>
                     <div>
                         <FaRocketchat className="step-icons"/>
-                        <h2> Digite seu número &amp; e mensagem personalizada </h2>
+                        <h2> Digite seu número &amp; mensagem</h2>
                         <p>Preencha o formulário com seu número e uma mensagem.</p>
                     </div>
                     <FaAngleDoubleRight className="FaAngleDoubleRight"/>
