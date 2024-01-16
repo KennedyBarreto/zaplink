@@ -33,7 +33,7 @@
 
 ## :dart: Sobre ##
 
-Gerador de links de contato para Whatsapp integrado com o a API do encurtador de links <a href="https://innovlink.click/" target="_blank"> Innovlink </a>
+Gerador de links de contato para Whatsapp integrado com um encurtador de links
 
 ## :sparkles: Funcionalidades ##
 
@@ -51,7 +51,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 - [JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [ReactJS](https://react.dev/)
+- [React](https://react.dev/)
+- [Node.js](https://nodejs.org/en)
 
 
 ## :white_check_mark: Pré requisitos ##
