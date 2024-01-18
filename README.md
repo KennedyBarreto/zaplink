@@ -1,6 +1,8 @@
 <div align="center" id="top"> 
 </div>
 
+<img src="screenshot.png" alt="ZapLink Homepage" />
+
 <h1 align="center"> ZapLink
  </h1>
 
@@ -62,14 +64,22 @@ em sua máquina
 
 ## :checkered_flag: Começando ##
 
-1 - Clone/Copie o repositório em sua máquina
+1 - Clone/Copie o repositório em sua máquina 
 
 2 - Instale as dependencias
 ```bash
+cd server
+npm i 
+cd ..
+cd client
 npm i
 ```
-3 - Inicie a aplicação React
+3 - Inicie o servidor node e o react
 ```bash
+cd server
+npm start
+cd ..
+cd client
 npm start
 ```
 
