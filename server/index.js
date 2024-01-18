@@ -1,17 +1,22 @@
-const  dotenv = require("dotenv");
-const  express = require("express");
-const  cors = require("cors");
-const  mongoose = require("mongoose");
-const  shortid = require("shortid");
-const  Url = require("./Url");
-const  utils = require("./Util/util");
+const dotenv = require("dotenv");
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const shortid = require("shortid");
+const Url = require("./Url");
+const utils = require("./Util/util");
 
 // configure dotenv
 dotenv.config();
 const app = express();
 
 // cors for cross-origin requests to the frontend application
-app.use(cors({ origin: "*"}));
+const corsOptions = {
+  origin: "*", // ou '*', para permitir de qualquer origem
+  optionsSuccessStatus: 200, // Alguns navegadores antigos podem exigir isso
+};
+
+app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -28,48 +33,26 @@ mongoose
     console.log(err.message);
   });
 
-// get all saved URLs 
-app.post("/all", async (req, res) => {
- try {
-  const { url } = req.body;
-  
-  let urls = await Url.findOne({ origUrl: url });
-  
-  if(urls){
-    
-    return res.status(200).json([urls])
-    
-  } else {
-
- const url  = await Url.find().sort({ date: -1} ).limit(1)
- return res.status(200).json(url); }
- } catch (error) {
-  console.log(error);
-  throw new Error("erro")
- }
-})  
-
 // URL shortener endpoint
-  app.post("/short", async (req, res) => {
-    console.log("HERE",req.body.url);
-    const { origUrl, shortTitle } = req.body;
-    const base = process.env.DOMAIN_URL
-    let urlId; // Declarada fora do escopo do if/else
+app.post("/short", async (req, res) => {
+  console.log("HERE", req.body.url);
+  const { origUrl, shortTitle } = req.body;
+  const base = process.env.DOMAIN_URL;
+  let urlId; // Declarada fora do escopo do if/else
 
-if (shortTitle === undefined) {
-  urlId = shortid.generate();
-  console.log(urlId);
-} else {
-  urlId = shortTitle;
-  console.log(urlId);
-} 
+  if (!shortTitle) {
+    urlId = shortid.generate();
+    console.log(urlId);
+  } else {
+    urlId = shortTitle;
+    console.log(urlId);
+  }
   if (utils.validateUrl(origUrl)) {
     try {
       let url = await Url.findOne({ origUrl });
       if (url) {
         console.log("Duplicada");
         return res.status(200).json(url);
-
       } else {
         const shortUrl = `${base}/${urlId}`; //
         url = new Url({
@@ -84,10 +67,10 @@ if (shortTitle === undefined) {
       }
     } catch (err) {
       console.log(err);
-      res.status(500).json('Server Error');
+      res.status(500).json("Server Error");
     }
   } else {
-    res.status(400).json('Invalid Original Url');
+    res.status(400).json("Invalid Original Url");
   }
 });
 
@@ -95,7 +78,7 @@ if (shortTitle === undefined) {
 app.get("/:urlId", async (req, res) => {
   try {
     const url = await Url.findOne({ urlId: req.params.urlId });
-    console.log(url)
+    console.log(url);
     if (url) {
       url.clicks++;
       url.save();
@@ -104,6 +87,24 @@ app.get("/:urlId", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json("Server Error");
+  }
+});
+
+//endpoint pra checar se existe um titulo no banco
+app.post("/check-url", async (req, res) => {
+  const { urlId } = req.body;
+
+  try {
+    const existingUrl = await Url.findOne({ urlId });
+
+    if (existingUrl) {
+      return res.status(400).json({ error: "URL já existe" });
+    }
+
+    return res.status(200).json({ message: "URL disponível" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: "Erro interno do servidor" });
   }
 });
 
