@@ -210,9 +210,9 @@ export default function Form() {
             <input
               disabled
               style={{
-                maxWidth: "40%",
+                maxWidth: "45%",
               }}
-              value={"localhost:3333/"}
+              value={config.apiUrl + "/"}
             ></input>
             <input
               id="title"
