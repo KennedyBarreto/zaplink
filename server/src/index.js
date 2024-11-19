@@ -78,7 +78,7 @@ app.post("/short", async (req, res) => {
 app.get("/:urlId", async (req, res) => {
   try {
     const url = await Url.findOne({ urlId: req.params.urlId });
-    
+
     if (url) {
       url.clicks++;
       url.save();
